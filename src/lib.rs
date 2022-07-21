@@ -12,7 +12,7 @@ pub struct CommandOutput {
 }
 
 impl CommandOutput {
-    pub fn from(output: io::Result<Output>) -> CommandOutput {
+    fn from(output: io::Result<Output>) -> CommandOutput {
         match output {
             Ok(output) => CommandOutput {
                 status: output.status,
