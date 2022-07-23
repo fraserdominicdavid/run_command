@@ -1,6 +1,6 @@
 [package]
 name = "run_command"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 authors = ["MoghTech"]
 description = "standardized way to run shell commands with a compact api."
@@ -9,3 +9,7 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+tokio = { version="1", features=["full"], optional = true }
+
+[features]
+async_tokio = ["dep:tokio"]
