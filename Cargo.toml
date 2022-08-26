@@ -1,6 +1,6 @@
 [package]
 name = "run_command"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2021"
 authors = ["MoghTech"]
 description = "standardized way to run shell commands with a compact api."

@@ -20,6 +20,7 @@ pub fn run_command_pipe_to_terminal(command: &str) -> CommandOutput {
         .arg(command)
         .stdin(Stdio::piped())
         .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
         .output();
     CommandOutput::from(output)
 }
