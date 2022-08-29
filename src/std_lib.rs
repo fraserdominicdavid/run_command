@@ -1,6 +1,6 @@
 use std::{
     io,
-    process::{Child, Command, Stdio},
+    process::{Child, Command},
 };
 
 use crate::output::CommandOutput;
@@ -15,12 +15,17 @@ pub fn spawn_command(command: &str) -> io::Result<Child> {
 }
 
 pub fn run_command_pipe_to_terminal(command: &str) -> CommandOutput {
-    let output = Command::new("sh")
+    let child = Command::new("sh")
         .arg("-c")
         .arg(command)
-        .stdin(Stdio::piped())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .output();
-    CommandOutput::from(output)
+        .spawn();
+    match child {
+        Ok(child) => {
+            let output = child.wait_with_output();
+            CommandOutput::from(output)
+        },
+        Err(e) => {
+            CommandOutput::from(Err(e))
+        }
+    }
 }
