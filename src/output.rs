@@ -16,8 +16,8 @@ impl CommandOutput {
         match output {
             Ok(output) => CommandOutput {
                 status: output.status,
-                stdout: String::from_utf8(output.stdout).unwrap_or("failed".to_string()),
-                stderr: String::from_utf8(output.stderr).unwrap_or("failed".to_string()),
+                stdout: String::from_utf8(output.stdout).unwrap_or("failed to generate stdout".to_string()),
+                stderr: String::from_utf8(output.stderr).unwrap_or("failed to generate stderr".to_string()),
             },
             Err(e) => CommandOutput {
                 status: ExitStatus::from_raw(1),
