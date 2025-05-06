@@ -1,6 +1,14 @@
+#[cfg(unix)]
 use std::{
     io,
     os::unix::process::ExitStatusExt,
+    process::{ExitStatus, Output},
+};
+
+#[cfg(windows)]
+use std::{
+    io,
+    os::windows::process::ExitStatusExt,
     process::{ExitStatus, Output},
 };
 
